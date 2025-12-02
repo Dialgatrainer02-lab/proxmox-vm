@@ -70,7 +70,7 @@ resource "proxmox_virtual_environment_vm" "proxmox_vm" {
    import_from = proxmox_virtual_environment_download_file.proxmox_vm_boot_image.id
    datastore_id = local.local_datastore[local.node_name]
    interface = "scsi0"
-   size = 20
+   
  }
 
   dynamic "disk" {
