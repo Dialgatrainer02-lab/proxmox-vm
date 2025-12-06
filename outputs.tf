@@ -11,6 +11,9 @@ output "node_name" {
   value = local.node_name
 }
 
+output "vm_id" {
+    value = proxmox_virtual_environment_vm.proxmox_vm.id
+}
 
 output "ip_config" {
   value = {
