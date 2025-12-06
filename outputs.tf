@@ -7,6 +7,9 @@ output "proxmox_vm" {
     value = proxmox_virtual_environment_vm.proxmox_vm
 }
 
+output "node_name" {
+  value = local.node_name
+}
 
 
 output "ip_config" {
