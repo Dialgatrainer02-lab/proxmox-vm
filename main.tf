@@ -35,7 +35,7 @@ resource "proxmox_virtual_environment_vm" "proxmox_vm" {
   }
 
   dynamic "clone" {
-    for_each = var.proxmox_vm_clone != null? 1: 0
+    for_each = var.proxmox_vm_clone != null? ["1"]: []
     content {
       vm_id = clone.value["vm_id"]
       node_name = clone.value["node_name"]
