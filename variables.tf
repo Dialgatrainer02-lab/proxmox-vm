@@ -94,7 +94,8 @@ variable "proxmox_vm_clone" {
     vm_id = string
     node_name = optional(string)
   })
-  default = {}
+  nullable = true
+  default = null
 }
 
 data "proxmox_virtual_environment_nodes" "available_nodes" {}
