@@ -78,7 +78,7 @@ variable "proxmox_vm_boot_image" {
     decompression_algorithm = optional(string)
     content_type = optional(string, "import")
   })
-  
+  nullable = true
 }
 
 variable "proxmox_vm_memory" {
@@ -111,15 +111,5 @@ locals {
     node_name => (
       [for ds in datastores : ds.id if ds.id == "local-zfs"][0]
     )
-  }
-}
-
-data "proxmox_virtual_environment_vms" "promox-vm" {
-  depends_on = [ proxmox_virtual_environment_vm.proxmox_vm ]
-  tags      = var.proxmox_vm_metadata.tags
-
-  filter {
-    name   = "name"
-    values = [var.proxmox_vm_metadata.name]
   }
 }
