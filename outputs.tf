@@ -7,6 +7,14 @@ output "proxmox_vm" {
     value = proxmox_virtual_environment_vm.proxmox_vm
 }
 
+output "node_name" {
+  value = local.node_name
+}
+
+output "vm_id" {
+  value = data.proxmox_virtual_environment_vms.promox-vm.vms[0].vm_id
+}
+
 
 output "ip_config" {
   value = {

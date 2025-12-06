@@ -7,6 +7,7 @@ variable "proxmox_vm_metadata" {
       node_name = optional(string)
       on_boot = optional(bool, true)
       agent = optional(bool, false)
+      template = optional(bool, false)
     })
     description = "metadata about the vm needed for its creation"
 }
@@ -88,6 +89,14 @@ variable "proxmox_vm_memory" {
     })
 }
 
+variable "proxmox_vm_clone" {
+  type = object({
+    vm_id = string
+    node_name = optional(string)
+  })
+  nullable = true
+}
+
 data "proxmox_virtual_environment_nodes" "available_nodes" {}
 
 data "proxmox_virtual_environment_datastores" "avalible_datastores" {
@@ -101,5 +110,15 @@ locals {
     node_name => (
       [for ds in datastores : ds.id if ds.id == "local-zfs"][0]
     )
+  }
+}
+
+data "proxmox_virtual_environment_vms" "promox-vm" {
+  depends_on = [ proxmox_virtual_environment_vm.proxmox_vm ]
+  tags      = var.proxmox_vm_metadata.tags
+
+  filter {
+    name   = "name"
+    values = [var.proxmox_vm_metadata.name]
   }
 }

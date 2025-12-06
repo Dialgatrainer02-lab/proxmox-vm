@@ -34,7 +34,10 @@ resource "proxmox_virtual_environment_vm" "proxmox_vm" {
     shared = var.proxmox_vm_memory.shared
   }
 
-
+  clone {
+    node_name = var.proxmox_vm_clone.node_name
+    vm_id = var.proxmox_vm_clone.vm_id
+  }
 
 # networking and other cloud init stuff
   initialization {
