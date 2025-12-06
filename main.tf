@@ -35,8 +35,8 @@ resource "proxmox_virtual_environment_vm" "proxmox_vm" {
   }
 
   clone {
-    node_name = var.proxmox_vm_clone.node_name
-    vm_id = var.proxmox_vm_clone.vm_id
+    node_name = var.proxmox_vm_clone? var.proxmox_vm_clone.node_name: null
+    vm_id = var.proxmox_vm_clone ? var.proxmox_vm_clone.vm_id : null
   }
 
 # networking and other cloud init stuff
