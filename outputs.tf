@@ -8,7 +8,7 @@ output "proxmox_vm" {
 }
 
 output "node_name" {
-  value = local.node_name
+  value = proxmox_virtual_environment_vm.proxmox_vm.node_name
 }
 
 output "vm_id" {
