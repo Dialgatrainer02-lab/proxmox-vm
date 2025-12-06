@@ -9,7 +9,7 @@ resource "proxmox_virtual_environment_vm" "proxmox_vm" {
 
 
   agent {
-    # read 'Qemu guest agent' section, change to true only when ready
+    # read "Qemu guest agent" section, change to true only when ready
     enabled = var.proxmox_vm_metadata.agent
   }
   stop_on_destroy = local.stop_on_destroy
@@ -34,9 +34,12 @@ resource "proxmox_virtual_environment_vm" "proxmox_vm" {
     shared = var.proxmox_vm_memory.shared
   }
 
-  clone {
-    node_name = var.proxmox_vm_clone != null ? var.proxmox_vm_clone.node_name: null
-    vm_id = var.proxmox_vm_clone != null ? var.proxmox_vm_clone.vm_id : null
+  dynamic "clone" {
+    for_each = var.proxmox_vm_clone != null? 1: 0
+    content {
+      vm_id = clone.value["vm_id"]
+      node_name = clone.value["node_name"]
+    }
   }
 
 # networking and other cloud init stuff
