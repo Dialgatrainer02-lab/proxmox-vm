@@ -165,7 +165,7 @@ resource "proxmox_virtual_environment_download_file" "proxmox_vm_boot_image" {
 }
 
 locals {
-  boot_image_datastore_id = var.proxmox_vm_boot_image? var.proxmox_vm_boot_image.datastore_id != null? var.proxmox_vm_boot_image.datastore_id: "local": null
+  boot_image_datastore_id = var.proxmox_vm_boot_image != null? var.proxmox_vm_boot_image.datastore_id != null? var.proxmox_vm_boot_image.datastore_id: "local": null
 }
 
 resource "tls_private_key" "proxmox_vm_key" {
