@@ -79,7 +79,10 @@ run "plan_test" {
     }
 
     # check rest of plan lines up
-
+    # assert {
+        # condition = proxmox_virtual_environment_download_file.proxmox_vm_boot_image["1"].id != null
+        # error_message = "boot image file was null"
+    # }
 
 }
 
