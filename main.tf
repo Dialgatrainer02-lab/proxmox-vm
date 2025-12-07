@@ -79,6 +79,8 @@ dynamic "disk" {
    import_from = proxmox_virtual_environment_download_file.proxmox_vm_boot_image["1"].id
    datastore_id = local.local_datastore[local.node_name]
    interface = "scsi0"
+   size = 32
+  #  hacky fix want to use the actual image size
    
  }
 }
