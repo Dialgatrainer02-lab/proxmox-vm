@@ -5,7 +5,7 @@ output "proxmox_vm_keys" {
 
 output "proxmox_vm" {
     value = nonsensitive(proxmox_virtual_environment_vm.proxmox_vm)
-    sensitive = false
+    sensitive = true
 }
 
 output "node_name" {
