@@ -4,6 +4,7 @@ resource "proxmox_virtual_environment_vm" "proxmox_vm" {
   description = var.proxmox_vm_metadata.description
   tags        = var.proxmox_vm_metadata.tags
 
+  started = var.proxmox_vm_metadata.started
   node_name = local.node_name
   vm_id     = var.proxmox_vm_metadata.vm_id
 

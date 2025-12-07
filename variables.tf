@@ -6,6 +6,7 @@ variable "proxmox_vm_metadata" {
       vm_id = optional(number)
       node_name = optional(string)
       on_boot = optional(bool, true)
+      started = optional(bool, true)
       agent = optional(bool, false)
       template = optional(bool, false)
     })
