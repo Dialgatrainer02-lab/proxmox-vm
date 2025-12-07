@@ -4,8 +4,8 @@ output "proxmox_vm_keys" {
 }
 
 output "proxmox_vm" {
-    value = proxmox_virtual_environment_vm.proxmox_vm
-    sensitive = true
+    value = nonsensitive(proxmox_virtual_environment_vm.proxmox_vm)
+    sensitive = false
 }
 
 output "node_name" {

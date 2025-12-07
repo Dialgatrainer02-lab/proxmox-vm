@@ -151,7 +151,7 @@ locals {
 }
 
 resource "proxmox_virtual_environment_download_file" "proxmox_vm_boot_image" {
-  for_each = toset(nonsensitive(var.proxmox_vm_clone) != null ? [] : ["1"])
+  for_each = toset(var.proxmox_vm_clone != null ? [] : ["1"])
   # disable if clone not null
   content_type = var.proxmox_vm_boot_image.content_type
   datastore_id = local.boot_image_datastore_id
