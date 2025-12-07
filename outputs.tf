@@ -5,14 +5,11 @@ output "proxmox_vm_keys" {
 
 output "proxmox_vm" {
     value = proxmox_virtual_environment_vm.proxmox_vm
+    sensitive = true
 }
 
 output "node_name" {
-  value = proxmox_virtual_environment_vm.proxmox_vm.node_name
-}
-
-output "vm_id" {
-    value = proxmox_virtual_environment_vm.proxmox_vm.id
+  value = local.node_name
 }
 
 output "ip_config" {
