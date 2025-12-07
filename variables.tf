@@ -91,7 +91,7 @@ variable "proxmox_vm_memory" {
 
 variable "proxmox_vm_clone" {
   type = object({
-    vm_id = string
+    vm_id = number
     node_name = optional(string)
   })
   nullable = true
