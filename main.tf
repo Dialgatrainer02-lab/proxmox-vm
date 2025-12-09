@@ -127,7 +127,15 @@ dynamic "disk" {
   }
   machine = "q35"
   bios = "ovmf"
-
+# hack for now
+lifecycle {
+   ignore_changes = [
+    ipv4_addresses,
+    ipv6_addresses,
+    mac_addresses,
+    network_interface_names
+  ]
+}
 }
 
 locals {
